@@ -19,7 +19,6 @@ This project was scaffolded from the original single-file website into a React +
 - `public/Mathconnect.png` - runtime logo asset served by Vite
 - `netlify.toml` - Netlify build and SPA redirect settings
 - `public/_redirects` - fallback route for SPA pages
-- `legacy/MathConnect2026_Website.html` - archived original monolithic file
 
 ## Local Development
 
