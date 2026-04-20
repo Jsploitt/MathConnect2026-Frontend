@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathConnect 2026 | 2nd International Conference of Mathematics and its Applications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #122040;
+      --blue: #1a4b8c;
+      --blue-light: #2563b8;
+      --gold: #c8970a;
+      --gold-light: #e8b422;
+      --cream: #f8f5ef;
+      --gray-light: #f0f2f5;
+      --gray-mid: #d0d6e0;
+      --text: #1a1a2e;
+      --text-muted: #5a6278;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 22, 40, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,151,10,0.25);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 15px;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo-text {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .nav-logo-text span { color: var(--gold-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--gold-light); background: rgba(200,151,10,0.1); }
+    .nav-links a.active { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      border-radius: 6px !important;
+      padding: 7px 16px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(26,75,140,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(200,151,10,0.12) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,151,10,0.15);
+      border: 1px solid rgba(200,151,10,0.35);
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+    }
+    
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .hero-date {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    .hero-venue {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 44px;
+      letter-spacing: 0.3px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,151,10,0.4); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); background: rgba(200,151,10,0.08); }
+
+    /* countdown */
+    .hero-countdown {
+      position: relative; z-index: 2;
+      display: flex;
+      gap: 24px;
+      margin-top: 60px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .count-box {
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px 22px;
+      min-width: 80px;
+    }
+    .count-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+      display: block;
+    }
+    .count-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ── PAGES / SECTIONS ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .section-title.light { color: var(--white); }
+    .section-desc { font-size: 16px; color: var(--text-muted); max-width: 680px; line-height: 1.75; }
+    .section-desc.light { color: rgba(255,255,255,0.7); }
+    .divider { width: 50px; height: 3px; background: var(--gold); border-radius: 2px; margin: 16px 0 32px; }
+    .divider.centered { margin: 16px auto 32px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .about-text p { font-size: 15.5px; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-box {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .stat-box.gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+    }
+    .stat-box.gold .stat-num { color: var(--navy); }
+    .stat-box.gold .stat-label { color: var(--navy); }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 4px; }
+
+    /* ── THEMES ── */
+    #themes { background: var(--gray-light); }
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .theme-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 30px 28px;
+      border: 1px solid var(--gray-mid);
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-light));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .theme-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(10,22,40,0.12); border-color: transparent; }
+    .theme-card:hover::before { transform: scaleX(1); }
+    .theme-icon {
+      width: 48px; height: 48px;
+      background: rgba(26,75,140,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .theme-card h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .theme-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── SPEAKERS ── */
+    #speakers { background: var(--white); }
+    .tba-box {
+      background: var(--gray-light);
+      border: 2px dashed var(--gray-mid);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .tba-box .tba-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+    .tba-box h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+    .tba-box p { color: var(--text-muted); font-size: 15px; }
+    .tba-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .speaker-card {
+      border: 1px solid var(--gray-mid);
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .speaker-card:hover { box-shadow: 0 10px 28px rgba(10,22,40,0.1); transform: translateY(-3px); }
+    .speaker-img {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+      color: rgba(255,255,255,0.2);
+    }
+    .speaker-info { padding: 18px 16px; }
+    .speaker-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--navy); }
+    .speaker-role { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .speaker-type { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; }
+
+    /* ── AGENDA ── */
+    #agenda { background: var(--navy); }
+    .agenda-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .agenda-tab {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .agenda-tab:hover, .agenda-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+    .agenda-tba {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px dashed rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 60px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .agenda-tba h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); margin-bottom: 8px; }
+    .agenda-tba p { color: rgba(255,255,255,0.5); }
+    .agenda-tba .tba-badge { margin-top: 20px; margin-bottom: 0; }
+
+    /* ── REGISTRATION ── */
+    #registration { background: var(--cream); }
+    .reg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .reg-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 28px;
+      border: 2px solid var(--gray-mid);
+      text-align: center;
+      transition: all 0.25s;
+      position: relative;
+    }
+    .reg-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(200,151,10,0.2);
+    }
+    .reg-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(10,22,40,0.12); }
+    .reg-badge-feat {
+      position: absolute;
+      top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .reg-type { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .reg-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 12px 0 4px;
+    }
+    .reg-price sup { font-size: 22px; vertical-align: super; }
+    .reg-currency { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+    .reg-features { text-align: left; list-style: none; margin-bottom: 28px; }
+    .reg-features li { font-size: 14px; color: var(--text-muted); padding: 6px 0; border-bottom: 1px solid var(--gray-light); display: flex; gap: 8px; align-items: flex-start; }
+    .reg-features li::before { content: '\2022'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .btn-reg {
+      display: block;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-reg:hover { background: var(--blue-light); }
+    .reg-card.featured .btn-reg { background: var(--gold); color: var(--navy); }
+    .reg-card.featured .btn-reg:hover { background: var(--gold-light); }
+
+    /* ── VENUE ── */
+    #venue { background: var(--white); }
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: start;
+    }
+    .venue-info-block {
+      background: var(--gray-light);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .venue-info-block h4 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--navy); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .venue-info-block p, .venue-info-block li { font-size: 14.5px; color: var(--text-muted); line-height: 1.75; }
+    .venue-info-block ul { list-style: none; }
+    .venue-info-block ul li::before { content: '-'; color: var(--gold); font-weight: 700; }
+    .venue-map {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--gray-mid);
+      height: 300px;
+      background: var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--text-muted);
+    }
+    .venue-map .map-icon { font-size: 42px; }
+    .venue-map p { font-size: 14px; }
+    .venue-map a {
+      color: var(--blue-light);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* ── COMMITTEE ── */
+    #committee { background: var(--gray-light); }
+    .committee-section { margin-bottom: 48px; }
+    .committee-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .committee-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--gold);
+      transition: all 0.2s;
+    }
+    .committee-card:hover { box-shadow: 0 6px 20px rgba(10,22,40,0.08); transform: translateX(3px); }
+    .committee-card .c-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+    .committee-card .c-role { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+    .committee-card.chair { border-left-color: var(--blue-light); }
+    .committee-card.chair .c-name::after { content: '  (Chair)'; color: var(--gold); font-size: 11px; }
+
+    /* ── ABSTRACTS ── */
+    #abstracts { background: var(--white); }
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .date-card {
+      border: 1px solid var(--gray-mid);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .date-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+    .date-icon { font-size: 24px; margin-bottom: 10px; }
+    .date-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .date-value { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-top: 4px; }
+
+    .guidelines-box {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 40px;
+      color: var(--white);
+    }
+    .guidelines-box h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold-light); margin-bottom: 20px; }
+    .guidelines-box ul { list-style: none; }
+    .guidelines-box ul li {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .guidelines-box ul li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 60px 24px 30px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 30px;
+    }
+    .footer-brand .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-brand .footer-logo span { color: var(--gold-light); }
+    .footer-brand p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
+    .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
+
+    /* KFUPM banner strip */
+    .org-strip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .org-strip-label { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+    .org-chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy); padding: 16px 20px; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .about-grid, .venue-grid, .footer-top { grid-template-columns: 1fr; }
+      .footer-top { gap: 32px; }
+      .agenda-tba, .tba-box { padding: 40px 24px; }
+      .guidelines-box { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="showPage('home')">
+      <div class="nav-logo-icon">MC</div>
+      <div class="nav-logo-text">Math<span>Connect</span> 2026</div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('speakers')" id="nav-speakers">Speakers</a></li>
+      <li><a href="#" onclick="showPage('agenda')" id="nav-agenda">Agenda</a></li>
+      <li><a href="#" onclick="showPage('committee')" id="nav-committee">Committee</a></li>
+      <li><a href="#" onclick="showPage('abstracts')" id="nav-abstracts">Abstracts</a></li>
+      <li><a href="#" onclick="showPage('venue')" id="nav-venue">Venue</a></li>
+      <li><a href="#" onclick="showPage('registration')" id="nav-registration" class="nav-cta">Register</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">2nd International Conference - KFUPM, Saudi Arabia</div>
+      <h1>Math<span>Connect</span><br>2026</h1>
+      <div class="hero-sub">International Conference of Mathematics and its Applications</div>
+      <div class="hero-date">December 14 - 16, 2026</div>
+      <div class="hero-venue">King Fahd University of Petroleum and Minerals · Dhahran, Saudi Arabia</div>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="showPage('abstracts')">Submit Abstract</a>
+        <a href="#" class="btn-outline" onclick="showPage('registration')">Register Now</a>
+      </div>
+    </div>
+    <div class="hero-countdown">
+      <div class="count-box"><span class="count-num" id="cd-days">--</span><div class="count-label">Days</div></div>
+      <div class="count-box"><span class="count-num" id="cd-hours">--</span><div class="count-label">Hours</div></div>
+      <div class="count-box"><span class="count-num" id="cd-mins">--</span><div class="count-label">Minutes</div></div>
+      <div class="count-box"><span class="count-num" id="cd-secs">--</span><div class="count-label">Seconds</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-label">About the Conference</span>
+          <h2 class="section-title">Where Mathematics<br>Meets Application</h2>
+          <div class="divider"></div>
+          <p>MathConnect 2026 marks the second edition of the MathConnect conference series, following the successful inaugural meeting held two years ago. The conference provides a dynamic forum where mathematicians, researchers, and practitioners can present and discuss recent advances across a broad spectrum of mathematical sciences.</p>
+          <p>A central objective is to strengthen the dialogue between fundamental mathematical research and its applications in science, engineering, finance, and emerging technological domains. By bringing together experts from diverse mathematical traditions, MathConnect 2026 stimulates exchange of ideas and promotes new perspectives at the interface between theory and practice.</p>
+          <p>The conference also fosters interdisciplinary collaborations and encourages exploration of emerging research directions, while inspiring early-career researchers and students through exposure to leading scholars.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <span class="stat-num">3</span>
+            <div class="stat-label">Conference Days</div>
+          </div>
+          <div class="stat-box gold">
+            <span class="stat-num">5</span>
+            <div class="stat-label">Thematic Tracks</div>
+          </div>
+          <div class="stat-box gold">
+            <span class="stat-num">500</span>
+            <div class="stat-label">Word Abstract Limit</div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">2nd</span>
+            <div class="stat-label">Edition</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEMES PREVIEW -->
+  <section id="themes">
+    <div class="section-inner">
+      <div style="text-align:center;">
+        <span class="section-label">Scientific Program</span>
+        <h2 class="section-title">Conference Themes</h2>
+        <div class="divider centered"></div>
+        <p class="section-desc" style="margin: 0 auto 0;">The scientific program is organized around thematic directions reflecting the depth of modern mathematical research and its growing interdisciplinary reach.</p>
+      </div>
+      <div class="themes-grid">
+        <div class="theme-card">
+          <div class="theme-icon"></div>
+          <h3>Graphs, Combinatorics & Cryptography</h3>
+          <p>Discrete structures, algorithmic thinking, and information security intersect. Research spanning structural combinatorics, complex networks, and cryptographic theory.</p>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon"></div>
+          <h3>Analytical & Modelling Applications</h3>
+          <p>Analytical methods for describing complex systems. Mathematical modelling translating real-world phenomena into rigorous frameworks for qualitative and quantitative insight.</p>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon"></div>
+          <h3>Linear Algebra & Applications</h3>
+          <p>Spectral theory, matrix analysis, numerical algorithms, and large-scale computation. Algebraic concepts evolving to address high-dimensional and data-intensive challenges.</p>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon"></div>
+          <h3>Stochastic Processes & Applications</h3>
+          <p>Probabilistic modelling and the mathematical study of uncertainty - indispensable in finance, physics, biology, and engineering.</p>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon"></div>
+          <h3>ML, Optimization, Statistics & Data Analytics</h3>
+          <p>Mathematical foundations of learning algorithms, optimization techniques, and statistical inference driving modern AI and data science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORG STRIP -->
+  <section style="background: var(--navy); padding: 40px 24px;">
+    <div class="section-inner">
+      <div class="org-strip">
+        <div class="org-strip-label">Organized by</div>
+        <div class="org-chip">KFUPM - Dept. of Mathematics</div>
+        <div class="org-chip">College of Computing & Mathematics (CCM)</div>
+        <div class="org-chip">KIKX Initiative</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: SPEAKERS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-speakers" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Our Speakers</span>
+      <h2 class="section-title light">Invited Speakers</h2>
+      <div class="divider"></div>
+      <p class="section-desc light">MathConnect 2026 brings together distinguished experts from around the world to present recent advances in the mathematical sciences.</p>
+    </div>
+  </section>
+
+  <section id="speakers" style="padding-top:60px;">
+    <div class="section-inner">
+      <h3 style="font-family:'Playfair Display',serif; color:var(--navy); font-size:22px; margin-bottom:6px;">Plenary Speakers</h3>
+      <p style="color:var(--text-muted); font-size:14px; margin-bottom:24px;">Distinguished invited speakers giving featured plenary talks.</p>
+      <div class="tba-box">
+        <div class="tba-icon"></div>
+        <div class="tba-badge">TBA</div>
+        <h3>Plenary Speakers - To Be Announced</h3>
+        <p>Plenary speaker announcements will be made closer to the conference date. Please check back for updates.</p>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif; color:var(--navy); font-size:22px; margin-bottom:6px; margin-top:60px;">Invited Speakers</h3>
+      <p style="color:var(--text-muted); font-size:14px; margin-bottom:24px;">Invited speakers presenting across the five conference themes.</p>
+      <div class="tba-box">
+        <div class="tba-icon"></div>
+        <div class="tba-badge">TBA</div>
+        <h3>Invited Speakers - To Be Announced</h3>
+        <p>Invited speaker lineup will be published following the abstract submission period.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: AGENDA -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-agenda" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Schedule</span>
+      <h2 class="section-title light">Conference Agenda</h2>
+      <div class="divider"></div>
+      <p class="section-desc light">MathConnect 2026 spans three full days - December 14, 15, and 16, 2026.</p>
+    </div>
+  </section>
+
+  <section id="agenda" style="background: var(--navy);">
+    <div class="section-inner">
+      <div class="agenda-tabs">
+        <button class="agenda-tab active">Day 1 - Dec 14</button>
+        <button class="agenda-tab">Day 2 - Dec 15</button>
+        <button class="agenda-tab">Day 3 - Dec 16</button>
+      </div>
+      <div class="agenda-tba">
+        <h3>Full Program - Coming Soon</h3>
+        <p>The conference program and detailed schedule are currently being finalized. Updates will be posted here as sessions are confirmed.</p>
+        <div class="tba-badge">TO BE ANNOUNCED</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: COMMITTEE -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-committee" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Organization</span>
+      <h2 class="section-title light">Conference Committees</h2>
+      <div class="divider"></div>
+    </div>
+  </section>
+
+  <section id="committee">
+    <div class="section-inner">
+
+      <!-- Steering -->
+      <div class="committee-section">
+        <h3>Steering Committee</h3>
+        <div class="committee-grid">
+          <div class="committee-card"><div class="c-name">Ali Al-Shaikhi</div><div class="c-role">Vice President of Research and Innovation</div></div>
+          <div class="committee-card"><div class="c-name">Mamdouh Al-Harthi</div><div class="c-role">Dean of Research</div></div>
+          <div class="committee-card"><div class="c-name">Abdullah Sultan</div><div class="c-role">Dean, CCM</div></div>
+          <div class="committee-card"><div class="c-name">Monther Alfuraidan</div><div class="c-role">Mathematics Chair</div></div>
+          <div class="committee-card"><div class="c-name">Ashfaque Bokhari</div><div class="c-role">Steering Member</div></div>
+          <div class="committee-card"><div class="c-name">Fahd Alzahrani</div><div class="c-role">Director, KIKX</div></div>
+        </div>
+      </div>
+
+      <!-- Scientific -->
+      <div class="committee-section">
+        <h3>Scientific Committee</h3>
+        <div class="committee-grid">
+          <div class="committee-card chair"><div class="c-name">Monther Alfuraidan</div><div class="c-role">Chair (Prof.)</div></div>
+          <div class="committee-card chair"><div class="c-name">Ashfaque Bokhari</div><div class="c-role">Co-Chair (Prof.)</div></div>
+          <div class="committee-card"><div class="c-name">Abdelslam Mimouni</div><div class="c-role">Prof.</div></div>
+          <div class="committee-card"><div class="c-name">Anatoly Alikhanov</div><div class="c-role">Dr.</div></div>
+          <div class="committee-card"><div class="c-name">Khaled Furati</div><div class="c-role">Prof.</div></div>
+          <div class="committee-card"><div class="c-name">Majdouline Bourji</div><div class="c-role">Dr.</div></div>
+        </div>
+      </div>
+
+      <!-- Technical -->
+      <div class="committee-section">
+        <h3>Technical Program Committee</h3>
+        <div class="committee-grid">
+          <div class="committee-card"><div class="c-name">Monther Alfuraidan</div><div class="c-role">KFUPM, Saudi Arabia</div></div>
+          <div class="committee-card"><div class="c-name">Ashfaque Bokhari</div><div class="c-role">KFUPM, Saudi Arabia</div></div>
+          <div class="committee-card"><div class="c-name">Anatoly Alikhanov</div><div class="c-role">KFUPM, Saudi Arabia</div></div>
+          <div class="committee-card"><div class="c-name">Majdouline Bourji</div><div class="c-role">KFUPM, Saudi Arabia</div></div>
+        </div>
+      </div>
+
+      <!-- Organizing -->
+      <div class="committee-section">
+        <h3>Organizing Committee (Local)</h3>
+        <div class="committee-grid">
+          <div class="committee-card chair"><div class="c-name">Monther Alfuraidan</div><div class="c-role">Mathematics Chair</div></div>
+          <div class="committee-card"><div class="c-name">Abdeslam Mimouni</div><div class="c-role">Organizing Member</div></div>
+          <div class="committee-card"><div class="c-name">Ashfaque Bokhari</div><div class="c-role">Organizing Member</div></div>
+          <div class="committee-card"><div class="c-name">Anatoly Alikhanov</div><div class="c-role">Organizing Member</div></div>
+          <div class="committee-card"><div class="c-name">Khaled Furati</div><div class="c-role">Organizing Member</div></div>
+          <div class="committee-card"><div class="c-name">Majdouline Bourji</div><div class="c-role">Organizing Member</div></div>
+          <div class="committee-card"><div class="c-name">Shahzad Sarwar</div><div class="c-role">Organizing Member</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: ABSTRACTS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-abstracts" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Call for Abstracts</span>
+      <h2 class="section-title light">Submit Your Abstract</h2>
+      <div class="divider"></div>
+      <p class="section-desc light">MathConnect 2026 invites submissions from researchers in all thematic areas of the conference.</p>
+    </div>
+  </section>
+
+  <section id="abstracts">
+    <div class="section-inner">
+      <div class="dates-grid">
+        <div class="date-card">
+          <div class="date-icon"></div>
+          <div class="date-label">Submission Opens</div>
+          <div class="date-value">May 12, 2026</div>
+        </div>
+        <div class="date-card">
+          <div class="date-icon"></div>
+          <div class="date-label">Submission Deadline</div>
+          <div class="date-value">July 20, 2026</div>
+        </div>
+        <div class="date-card">
+          <div class="date-icon"></div>
+          <div class="date-label">Acceptance Notification</div>
+          <div class="date-value">~2 weeks after submission</div>
+        </div>
+        <div class="date-card">
+          <div class="date-icon"></div>
+          <div class="date-label">Conference Dates</div>
+          <div class="date-value">Dec 14-16, 2026</div>
+        </div>
+      </div>
+
+      <div class="guidelines-box">
+        <h3> Abstract Submission Guidelines</h3>
+        <ul>
+          <li>An abstract of <strong>no more than 500 words</strong> should be submitted to the conference secretariat by the deadline.</li>
+          <li>Acceptance of abstracts will be announced after refereeing within <strong>two weeks</strong> after submission.</li>
+          <li>Source files of abstracts and full-length papers should be prepared in <strong>LaTeX</strong>.</li>
+          <li>Submissions must be original and unpublished work not under review elsewhere.</li>
+          <li>All submissions will undergo peer review by the Scientific Committee.</li>
+          <li>Abstracts should clearly state the research question, methodology, and main results.</li>
+          <li>At least one author of each accepted abstract must register for the conference.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:40px; background:var(--gray-light); border-radius:16px; padding:40px; text-align:center;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; color:var(--navy); margin-bottom:12px;">Ready to Submit?</h3>
+        <p style="color:var(--text-muted); margin-bottom:28px; font-size:15px;">The submission portal opens <strong>May 12, 2026</strong>. Check back then to submit your abstract.</p>
+        <span style="display:inline-block; background:var(--navy); color:rgba(255,255,255,0.5); padding:14px 32px; border-radius:8px; font-size:15px; font-weight:600;">Portal Opens May 12, 2026</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: VENUE -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-venue" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Location</span>
+      <h2 class="section-title light">Venue & Travel</h2>
+      <div class="divider"></div>
+      <p class="section-desc light">MathConnect 2026 will be held at King Fahd University of Petroleum and Minerals in Dhahran, Saudi Arabia.</p>
+    </div>
+  </section>
+
+  <section id="venue">
+    <div class="section-inner">
+      <div class="venue-grid">
+        <div>
+          <div class="venue-info-block">
+            <h4> Conference Venue</h4>
+            <p><strong>King Fahd University of Petroleum and Minerals (KFUPM)</strong><br>
+            Dhahran, Eastern Province<br>
+            Kingdom of Saudi Arabia</p>
+          </div>
+          <div class="venue-info-block">
+            <h4> Getting There</h4>
+            <ul>
+              <li>The nearest international airport is <strong>King Fahd International Airport (KFIA)</strong>, approx. 45 km away.</li>
+              <li>Dhahran is well connected by road to Dammam, Al Khobar, and other major Eastern Province cities.</li>
+              <li>Hotel and accommodation information will be published closer to the conference date.</li>
+            </ul>
+          </div>
+          <div class="venue-info-block">
+            <h4> Visa Information</h4>
+            <p>International attendees requiring a visa to enter the Kingdom of Saudi Arabia should begin the application process well in advance. Detailed guidance on visa application procedures will be available soon.</p>
+            <p style="margin-top:10px;"><strong>TBD</strong> - Visa support letter requests and additional information will be provided.</p>
+          </div>
+          <div class="venue-info-block">
+            <h4> Accommodation</h4>
+            <p>A list of recommended hotels near the venue and accommodation options close to the event will be shared here once finalized.</p>
+            <p style="margin-top:10px;"><strong>TBD</strong> - Accommodation recommendations coming soon.</p>
+          </div>
+        </div>
+        <div>
+          <div class="venue-map">
+            <div class="map-icon"></div>
+            <p>King Fahd University of Petroleum and Minerals</p>
+            <p style="color:var(--text-muted); font-size:13px;">Dhahran, Saudi Arabia</p>
+            <a href="https://maps.google.com/?q=King+Fahd+University+of+Petroleum+and+Minerals" target="_blank" rel="noopener">View on Google Maps →</a>
+          </div>
+          <div class="venue-info-block" style="margin-top:20px;">
+            <h4> About KFUPM</h4>
+            <p>King Fahd University of Petroleum and Minerals is one of the leading universities in the Arab world and a premier destination for research in science, engineering, and mathematics. The campus in Dhahran offers world-class facilities for academic conferences.</p>
+          </div>
+          <div class="venue-info-block">
+            <h4> Weather in December</h4>
+            <p>Dhahran in December enjoys mild, pleasant weather - ideal for visiting. Expect temperatures between <strong>12-24°C</strong> with little to no rainfall.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: REGISTRATION -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="page-registration" style="padding-top:64px;">
+  <section style="background: var(--navy); padding: 60px 24px;">
+    <div class="section-inner">
+      <span class="section-label">Registration</span>
+      <h2 class="section-title light">Conference Registration</h2>
+      <div class="divider"></div>
+      <p class="section-desc light">Registration details and fees for MathConnect 2026 will be announced soon. Secure your spot below.</p>
+    </div>
+  </section>
+
+  <section id="registration">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:48px;">
+        <span class="section-label">Registration Tiers</span>
+        <h2 class="section-title">Choose Your Pass</h2>
+        <div class="divider centered"></div>
+        <p class="section-desc" style="margin:0 auto;">Registration fees are TBD. The categories below are indicative. Final pricing will be announced with registration opening.</p>
+      </div>
+
+      <div class="reg-grid">
+        <div class="reg-card">
+          <div class="reg-type">Student</div>
+          <div class="reg-price"><sup></sup>TBD</div>
+          <div class="reg-currency">Discounted rate for students</div>
+          <ul class="reg-features">
+            <li>Full conference access (3 days)</li>
+            <li>Access to all sessions & workshops</li>
+            <li>Conference materials</li>
+            <li>Networking events</li>
+          </ul>
+          <a href="#" class="btn-reg">Coming Soon</a>
+        </div>
+        <div class="reg-card featured">
+          <div class="reg-badge-feat">MOST POPULAR</div>
+          <div class="reg-type">Academic / Researcher</div>
+          <div class="reg-price"><sup></sup>TBD</div>
+          <div class="reg-currency">Standard academic rate</div>
+          <ul class="reg-features">
+            <li>Full conference access (3 days)</li>
+            <li>Access to all sessions & workshops</li>
+            <li>Conference materials & proceedings</li>
+            <li>Conference dinner & social events</li>
+            <li>Certificate of attendance</li>
+          </ul>
+          <a href="#" class="btn-reg">Coming Soon</a>
+        </div>
+        <div class="reg-card">
+          <div class="reg-type">Industry / Professional</div>
+          <div class="reg-price"><sup></sup>TBD</div>
+          <div class="reg-currency">Professional rate</div>
+          <ul class="reg-features">
+            <li>Full conference access (3 days)</li>
+            <li>All sessions, workshops & networking</li>
+            <li>Conference materials & proceedings</li>
+            <li>Conference dinner & social events</li>
+          </ul>
+          <a href="#" class="btn-reg">Coming Soon</a>
+        </div>
+      </div>
+
+      <div style="margin-top:50px; background:var(--navy); border-radius:16px; padding:40px; text-align:center;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--gold-light); margin-bottom:10px;">Questions about Registration?</h3>
+        <p style="color:rgba(255,255,255,0.6); margin-bottom:24px;">Contact the conference secretariat for any registration-related inquiries.</p>
+        <a href="mailto:mathconnect2026@kfupm.edu.sa" style="color:var(--gold-light); font-size:16px; font-weight:600; text-decoration:none;">mathconnect2026@kfupm.edu.sa</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FOOTER (shared) -->
+<!-- ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Math<span>Connect</span> 2026</div>
+        <p>2nd International Conference of Mathematics and its Applications.<br>December 14-16, 2026 · KFUPM, Dhahran, Saudi Arabia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('speakers')">Speakers</a></li>
+          <li><a href="#" onclick="showPage('agenda')">Agenda</a></li>
+          <li><a href="#" onclick="showPage('committee')">Committees</a></li>
+          <li><a href="#" onclick="showPage('abstracts')">Call for Abstracts</a></li>
+          <li><a href="#" onclick="showPage('venue')">Venue</a></li>
+          <li><a href="#" onclick="showPage('registration')">Registration</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:mathconnect2026@kfupm.edu.sa">mathconnect2026@kfupm.edu.sa</a></li>
+          <li><a href="https://www.kfupm.edu.sa" target="_blank">kfupm.edu.sa</a></li>
+        </ul>
+        <h4 style="margin-top:24px;">Conference Dates</h4>
+        <ul>
+          <li><a href="#">Dec 14, 2026 - Day 1</a></li>
+          <li><a href="#">Dec 15, 2026 - Day 2</a></li>
+          <li><a href="#">Dec 16, 2026 - Day 3</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MathConnect. All rights reserved. Organized by KFUPM Department of Mathematics.</p>
+      <a href="https://www.kfupm.edu.sa" target="_blank">KFUPM ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Page routing ──
+  const pages = ['home','speakers','agenda','committee','abstracts','venue','registration'];
+
+  function showPage(name) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.toggle('active', p === name);
+      const navEl = document.getElementById('nav-' + p);
+      if (navEl) navEl.classList.toggle('active', p === name);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // close mobile menu
+    document.getElementById('navLinks').classList.remove('open');
+  }
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // ── Countdown to Dec 14, 2026 ──
+  function updateCountdown() {
+    const target = new Date('2026-12-14T08:00:00').getTime();
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['days','hours','mins','secs'].forEach(k => document.getElementById('cd-' + k).textContent = '00');
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── Agenda tabs (cosmetic) ──
+  document.querySelectorAll('.agenda-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.agenda-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
